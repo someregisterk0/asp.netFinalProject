@@ -1,0 +1,29 @@
+Member
+MỘT Member có thể làm nhiều Quiz
+
+Quiz: bài kiểm tra
+khóa ngoại MemberId
+MỘT Quiz có thể được làm bời NHIỀU Member
+MỘT Quiz có nhiều Question
+
+=> Member và Quiz là quan hệ NHIỀU NHIỀU => Take là bảng trung gian giữa Member và Quiz
+
+
+Question: câu hỏi
+khóa ngoại QuizId
+MỘT Question nằm trong MỘT Quiz
+MỘT Question có MỘT Anwser
+
+
+Answer: câu trả lời
+khóa ngoại QuestionId
+MỘT Anwser thuộc MỘT Question
+
+
+Take: làm bài kiểm tra
+khóa ngoại MemberId, QuizId
+khóa chính MemberId & QuizId
+Take là bảng trung gian giữa Member và Quiz
+
+TakeAnwser: bài kiểm tra với câu trả lời
+khóa ngoại MemberId, QuizId, QuestionId, AnwserId

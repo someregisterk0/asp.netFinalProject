@@ -14,8 +14,10 @@ CREATE TABLE Member(
 GO
 INSERT INTO Member (MemberId, Username, Password, Email) VALUES
 	('21052186-0D78-47CE-B899-68197A16813D', 'thanh', HASHBYTES('SHA2_256', '123'), 'thanh@cse.net.vn'),
-	('B23357F8-B15E-45B8-B62B-89D0D1794AA8', 'thien', HASHBYTES('SHA2_256', '456'), 'thien@cse.net.vn'),
-	('287674CC-4049-4D94-B4C9-1B92AC8D1A30', 'sinh', HASHBYTES('SHA2_256', '128'), 'sinh@cse.net.vn');
+	('B23357F8-B15E-45B8-B62B-89D0D1794AA8', 'thien', HASHBYTES('SHA2_256', '123'), 'thien@cse.net.vn'),
+	('287674CC-4049-4D94-B4C9-1B92AC8D1A30', 'sinh', HASHBYTES('SHA2_256', '123'), 'sinh@cse.net.vn'),
+	('1DE9128D-9C6B-481E-9091-900148603698', 'danh', HASHBYTES('SHA2_256', '123'), 'danh@email.com'),
+	('A9C86305-9BF0-4488-BBF2-5186CB1D74D5', 'trang', HASHBYTES('SHA2_256', '123'), 'trang@email.com');
 GO
 
 
