@@ -12,18 +12,23 @@ MỘT Quiz có nhiều Question
 Question: câu hỏi
 khóa ngoại QuizId
 MỘT Question nằm trong MỘT Quiz
-MỘT Question có MỘT Anwser
+MỘT Quiz có NHIỀU Question
+MỘT Question có NHIỀU Answer (nhưng chỉ có 1 Answer đúng)
 
 
 Answer: câu trả lời
 khóa ngoại QuestionId
-MỘT Anwser thuộc MỘT Question
+MỘT Answer thuộc MỘT Question
 
 
-Take: làm bài kiểm tra
+Take: làm 1 bài kiểm tra
 khóa ngoại MemberId, QuizId
-khóa chính MemberId & QuizId
-Take là bảng trung gian giữa Member và Quiz
+khóa chính (MemberId & QuizId)
+Take là bảng trung gian giữa Member và Quiz, là 1 bài kiểm tra mà 1 Member làm theo 1 Quiz
+MỘT Member có thể làm nhiều Take
+MỘT Quiz có thể có NHIỀU Take (từ NHIỀU Member làm)
 
-TakeAnwser: bài kiểm tra với câu trả lời
-khóa ngoại MemberId, QuizId, QuestionId, AnwserId
+
+TakeAnswer: 1 câu trả lời
+khóa ngoại MemberId, QuizId, QuestionId, AnswerId
+MỘT Take có sẽ có NHIỀU TakeAnswer
