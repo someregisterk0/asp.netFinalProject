@@ -25,17 +25,21 @@ GO
 /* ---------- QUIZ ---------- */
 CREATE TABLE Quiz(
 	QuizId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(),
-	Title NVARCHAR(64) NOT NULL,
+	MemberId UNIQUEIDENTIFIER NOT NULL REFERENCES Member(MemberId),
+	Title NVARCHAR(128) NOT NULL,
 	TotalScore TINYINT NOT NULL,
 	CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
 	UpdatedAt DATETIME,
-	PublishedAt DATETIME NOT NULL,
-	StartsAt DATETIME NOT NULL,
-	EndsAt DATETIME NOT NULL,
-	Content NVARCHAR(1024)
+	Note NVARCHAR(1024)
 );
-INSERT INTO Quiz(QuizId, Title, TotalScore, PublishedAt, StartsAt, EndsAt) VALUES
-	('09F9B31E-8155-4F7C-B51E-84EC837F5DE3', N'Đề thi thử ôn thi cao học Kinh Tế UEH 2019', 100, '2020/1/1', '2020/1/1', '2021/12/31');
+INSERT INTO Quiz(QuizId, MemberId, Title, TotalScore, CreatedAt) VALUES
+	('09F9B31E-8155-4F7C-B51E-84EC837F5DE3', '21052186-0D78-47CE-B899-68197A16813D', N'Đề thi thử ôn thi cao học Kinh Tế UEH 2019', 100, '2020/1/1');
+GO
+INSERT INTO Quiz(QuizId, MemberId, Title, TotalScore, CreatedAt) VALUES
+	('6A19E58A-10E8-4A09-928E-BE367469766F', '21052186-0D78-47CE-B899-68197A16813D', N'Đề thi trắc nghiệm môn Kiến thức chung trực tuyến ôn thi công chức viên chức', 100, '2020/1/2');
+GO
+INSERT INTO Quiz(QuizId, MemberId, Title, TotalScore, CreatedAt) VALUES
+	('93E38472-0B39-4712-B5C8-B9FD4EFBA66D', '21052186-0D78-47CE-B899-68197A16813D', N'Đề thi môn Vật Lý', 100, '2020/1/3');
 GO
 
 
@@ -79,10 +83,9 @@ CREATE TABLE Take(
 	Score TINYINT,
 	CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
 	UpdatedAt DATETIME,
-	PublishedAt DATETIME NOT NULL,
 	StartsAt DATETIME NOT NULL,
 	FinishedAt DATETIME,
-	Content NVARCHAR(1024)
+	Note NVARCHAR(1024)
 );
 GO
 
@@ -96,7 +99,6 @@ CREATE TABLE TakeAnswer(
 	CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
 	UpdatedAt DATETIME,
 	Active BIT NOT NULL DEFAULT 0,
-	Content NVARCHAR(256),
 	PRIMARY KEY(TakeId, QuestionId, AnswerId)
 );
 GO
