@@ -10,13 +10,13 @@ namespace WebApp.Models
 
         MemberRepository member;
 
-        MemberRepository Member
+        public MemberRepository Member
         {
             get
             {
                 if (member is null)
                 {
-                    MemberRepository member = new MemberRepository(Connection);
+                    member = new MemberRepository(Connection);
                 }
                 return member;
             }

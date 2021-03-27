@@ -4,8 +4,9 @@ GO
 /* ---------- Insert Questions & Answers ---------- */
 
 
-
+----------------------------------------------------------------------------------------------------------------------
 /* ---------- Quiz: 09F9B31E-8155-4F7C-B51E-84EC837F5DE3 (Đề thi thử ôn thi cao học Kinh Tế UEH 2019) ---------- */
+----------------------------------------------------------------------------------------------------------------------
 INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
 	VALUES('2A4DBF4D-62AF-4DD1-B056-4392B9D96330', '09F9B31E-8155-4F7C-B51E-84EC837F5DE3', 0, 20, 
 	N'Một mặt hàng được miễn thuế nhập khẩu cho giá trị 1000 USD đầu tiên, trên mức đó thuế suất nhập khẩu là 7%. Một khách du lịch phải đóng thuế 87.5 USD, hỏi tổng giá trị mặt hàng mà người đó đã mang vào trong nước là bao nhiêu?');
@@ -436,9 +437,9 @@ GO
 /* ---------- END Quiz: 09F9B31E-8155-4F7C-B51E-84EC837F5DE3 (Đề thi thử ôn thi cao học Kinh Tế UEH 2019) ---------- */
 
 
-
+------------------------------------------------------------------------------------------------------------------------------------------------------
 /* ---------- Quiz: 6A19E58A-10E8-4A09-928E-BE367469766F (Đề thi trắc nghiệm môn Kiến thức chung trực tuyến ôn thi công chức viên chức)  ---------- */
-
+------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
 	VALUES('14C8A48B-9FB6-44F4-BF0A-E7F02A44E860', '6A19E58A-10E8-4A09-928E-BE367469766F', 0, 20, 
 	N'Uỷ ban nhân dân có nhiệm vụ, quyền hạn nào dưới đây?');
@@ -673,8 +674,9 @@ GO
 
 
 
-
+----------------------------------------------------------------------------------------------------------------------
 /* ---------- Quiz: 93E38472-0B39-4712-B5C8-B9FD4EFBA66D (Đề thi môn Vật Lý)  ---------- */
+----------------------------------------------------------------------------------------------------------------------
 INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
 	VALUES('416CAC58-4519-4F47-B362-0F11A2DEACFC', '93E38472-0B39-4712-B5C8-B9FD4EFBA66D', 0, 20, 
 	N'Một vật rơi tự do từ độ cao h = 500m tại nơi có gia tốc trọng trường g = 10 m/s<sup>2</sup>. Thời gian kể từ lúc rơi đến khi vật chạm đất là:');
@@ -862,6 +864,350 @@ INSERT INTO Answer(QuestionId, Correct, Content) VALUES
 	('806A2758-2C56-4ECC-BA06-3C8F1FAC5054', 0, N'được quan sát trong nhiều hệ quy chiếu khác nhau.');
 GO
 /* -------- END Quiz: 93E38472-0B39-4712-B5C8-B9FD4EFBA66D (Đề thi môn Vật Lý)  ---------- */
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+/* -------- Quiz: CDBDC022-D3D6-4A01-9968-F6AC1633F482 (Đề thi môn Địa Lý)  ---------- */
+----------------------------------------------------------------------------------------------------------------------
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('8D69D469-5233-4E1E-A33F-08098012643B', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Cho biết tỉnh nào sau đây không giáp với Campuchia cả trên đất liền và trên biển, dựa vào Atlat Địa lí Việt Nam trang 4-5?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('8D69D469-5233-4E1E-A33F-08098012643B', 0, N'Kiên Giang'),
+	('8D69D469-5233-4E1E-A33F-08098012643B', 1, N'Cà Mau'),
+	('8D69D469-5233-4E1E-A33F-08098012643B', 0, N'Đồng Tháp'),
+	('8D69D469-5233-4E1E-A33F-08098012643B', 0, N'An Giang');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('8936951D-E49B-4486-A51E-D6B814D13FB1', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 10, cho biết trong số các hệ thống sông sau đây, hệ thống sông nào có diện tích lưu vực lớn nhất?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('8936951D-E49B-4486-A51E-D6B814D13FB1', 0, N'Sông Đồng Nai'),
+	('8936951D-E49B-4486-A51E-D6B814D13FB1', 1, N'Sông Cả'),
+	('8936951D-E49B-4486-A51E-D6B814D13FB1', 0, N'Sông Hồng'),
+	('8936951D-E49B-4486-A51E-D6B814D13FB1', 0, N'Sông Mã');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('25131E61-E47F-46D5-AA9D-118B45EAF9F5', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 9, cho biết Sa Pa thuộc vùng khí hậu nào sau đây?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('25131E61-E47F-46D5-AA9D-118B45EAF9F5', 0, N'Nam Trung Bộ.'),
+	('25131E61-E47F-46D5-AA9D-118B45EAF9F5', 1, N'Đông Bắc Bộ.'),
+	('25131E61-E47F-46D5-AA9D-118B45EAF9F5', 0, N'Tây Bắc Bộ.'),
+	('25131E61-E47F-46D5-AA9D-118B45EAF9F5', 0, N'Bắc Trung Bộ.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('141C7CB3-022A-437F-89F3-11304DED31D4', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 4-5, cho biết tỉnh nào sau đây có biên giới giáp với Trung Quốc và Lào?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('141C7CB3-022A-437F-89F3-11304DED31D4', 0, N'Lào Cai'),
+	('141C7CB3-022A-437F-89F3-11304DED31D4', 1, N'Điện Biên'),
+	('141C7CB3-022A-437F-89F3-11304DED31D4', 0, N'Hà Giang'),
+	('141C7CB3-022A-437F-89F3-11304DED31D4', 0, N'Sơn La');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('944462FE-47A0-4554-B375-9E2041947CA2', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 19, cho biết cây điều ở nước ta được trồng tập trung ở những vùng nào?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('944462FE-47A0-4554-B375-9E2041947CA2', 0, N'Tây Nguyên, Đông Nam Bộ, DH Nam Trung Bộ.'),
+	('944462FE-47A0-4554-B375-9E2041947CA2', 1, N'Đông Nam Bộ, DH Nam Trung Bộ, ĐB sông Hồng.'),
+	('944462FE-47A0-4554-B375-9E2041947CA2', 0, N'Đông Nam Bộ, Tây Nguyên, Trung du miền núi Bắc Bộ.'),
+	('944462FE-47A0-4554-B375-9E2041947CA2', 0, N'Tây Nguyên, DH Nam Trung Bộ, Bắc Trung Bộ.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('8100121A-472B-4F04-B85A-23F05F8F8476', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 25, hãy cho biết trung tâm du lịch nào có ý nghĩa quốc gia?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('8100121A-472B-4F04-B85A-23F05F8F8476', 0, N'Đà Nẵng.'),
+	('8100121A-472B-4F04-B85A-23F05F8F8476', 1, N'Vinh.'),
+	('8100121A-472B-4F04-B85A-23F05F8F8476', 0, N'Đông Hà.'),
+	('8100121A-472B-4F04-B85A-23F05F8F8476', 0, N'Đồng Hới.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('6AC90BE0-1C66-487A-A818-520526A4A8A3', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Căn cứ vào Atlat Địa lí Việt Nam trang 22, cho biết trung tâm công nghiệp chế biến lương thực, thực phẩm nào sau đây có quy mô rất lớn?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('6AC90BE0-1C66-487A-A818-520526A4A8A3', 0, N'Bình Định'),
+	('6AC90BE0-1C66-487A-A818-520526A4A8A3', 1, N'Quảng Ngãi'),
+	('6AC90BE0-1C66-487A-A818-520526A4A8A3', 0, N'Quảng Nam'),
+	('6AC90BE0-1C66-487A-A818-520526A4A8A3', 0, N'Phú Yên');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('E1F7C728-223B-4635-A98D-B2F963B6BDD9', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Ở nước ta, vùng Đồng bằng sông Hồng và Đồng bằng sông Cửu Long có ngành chăn nuôi phát triển là do đâu?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('E1F7C728-223B-4635-A98D-B2F963B6BDD9', 0, N'có lực lượng lao động đông đảo, có kinh nghiệm trong chăn nuôi.'),
+	('E1F7C728-223B-4635-A98D-B2F963B6BDD9', 1, N'các giống vật nuôi địa phương đa dạng, có giá trị kinh tế cao.'),
+	('E1F7C728-223B-4635-A98D-B2F963B6BDD9', 0, N'có nguồn thức ăn phong phú, thị trường tiêu thụ rộng lớn.'),
+	('E1F7C728-223B-4635-A98D-B2F963B6BDD9', 0, N'có điều kiện tự nhiên thuận lợi, lực lượng lao động dồi dào.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('D52DB2EB-F742-45D2-9048-22EC4487952B', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Than nâu ở nước ta tập trung nhiều ở đâu?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('D52DB2EB-F742-45D2-9048-22EC4487952B', 0, N'Duyên hải Nam Trung Bộ.'),
+	('D52DB2EB-F742-45D2-9048-22EC4487952B', 1, N'Đồng bằng sông Cửu Long.'),
+	('D52DB2EB-F742-45D2-9048-22EC4487952B', 0, N'Bể than Đông Bắc.'),
+	('D52DB2EB-F742-45D2-9048-22EC4487952B', 0, N'Đồng bằng sông Hồng.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('84CD52C4-E533-4E31-A9C3-183B9E93FA9D', 'CDBDC022-D3D6-4A01-9968-F6AC1633F482', 0, 20, 
+	N'Ngành công nghiệp chế bến sản phẩm chăn nuôi ở nước ta chưa phát triển là do đâu?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('84CD52C4-E533-4E31-A9C3-183B9E93FA9D', 0, N'thiếu nguồn lao động có trình độ.'),
+	('84CD52C4-E533-4E31-A9C3-183B9E93FA9D', 1, N'nguồn nguyên liệu chưa đảm bảo.'),
+	('84CD52C4-E533-4E31-A9C3-183B9E93FA9D', 0, N'công nghệ sản xuất còn lạc hậu'),
+	('84CD52C4-E533-4E31-A9C3-183B9E93FA9D', 0, N'nguồn vốn đầu tư hạn chế.');
+GO
+/* -------- END Quiz: CDBDC022-D3D6-4A01-9968-F6AC1633F482 (Đề thi môn Địa Lý)  ---------- */
+
+
+----------------------------------------------------------------------------------------------------------------------
+/* -------- Quiz: 8FEFC053-B23F-4B4F-9195-C218B5EA3574 (Đề thi môn Tiếng Anh)  ---------- */
+----------------------------------------------------------------------------------------------------------------------
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('1A5730E1-3765-4A2C-B67F-48A0ADC6772B', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'Choose the word that differs from the other three in the position of primary stress:&nbsp;critical, solution, perform, reaction.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('1A5730E1-3765-4A2C-B67F-48A0ADC6772B', 0, N'critical'),
+	('1A5730E1-3765-4A2C-B67F-48A0ADC6772B', 1, N'solution'),
+	('1A5730E1-3765-4A2C-B67F-48A0ADC6772B', 0, N'perform'),
+	('1A5730E1-3765-4A2C-B67F-48A0ADC6772B', 0, N'reaction');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('87D1FED8-2602-48F0-99EC-89E857E772AE', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'Choose the word that differs from the other three in the position of primary stress:&nbsp;alteration, observe, achievement, specific.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('87D1FED8-2602-48F0-99EC-89E857E772AE', 0, N'alteration'),
+	('87D1FED8-2602-48F0-99EC-89E857E772AE', 1, N'observe'),
+	('87D1FED8-2602-48F0-99EC-89E857E772AE', 0, N'achievement'),
+	('87D1FED8-2602-48F0-99EC-89E857E772AE', 0, N'specific');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('39ADE1CF-2D40-471A-915A-5A4668FDC15E', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'What were some of the things that brought ______ the Resolution?');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('39ADE1CF-2D40-471A-915A-5A4668FDC15E', 0, N'around'),
+	('39ADE1CF-2D40-471A-915A-5A4668FDC15E', 1, N'up'),
+	('39ADE1CF-2D40-471A-915A-5A4668FDC15E', 0, N'on'),
+	('39ADE1CF-2D40-471A-915A-5A4668FDC15E', 0, N'about');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('AD2F0F98-9882-4FEA-8A7D-7A251876B20B', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'Poor management brought the company to______ of collapse.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('AD2F0F98-9882-4FEA-8A7D-7A251876B20B', 0, N'the ring'),
+	('AD2F0F98-9882-4FEA-8A7D-7A251876B20B', 1, N'the edge'),
+	('AD2F0F98-9882-4FEA-8A7D-7A251876B20B', 0, N'the brink'),
+	('AD2F0F98-9882-4FEA-8A7D-7A251876B20B', 0, N'the foot');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('C44A2DBD-775E-452F-9A9C-5BB8E68447B1', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'John ______ this task yesterday morning, but I did it for him. He owes me a thank-you.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('C44A2DBD-775E-452F-9A9C-5BB8E68447B1', 0, N'must have completed'),
+	('C44A2DBD-775E-452F-9A9C-5BB8E68447B1', 1, N'may have completed'),
+	('C44A2DBD-775E-452F-9A9C-5BB8E68447B1', 0, N'should have completed'),
+	('C44A2DBD-775E-452F-9A9C-5BB8E68447B1', 0, N'could have completed');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('C3B70525-EA67-4E8C-BA71-7B1BC1F200F3', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'I may look half asleep, but I can assure you I am ______ awake.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('C3B70525-EA67-4E8C-BA71-7B1BC1F200F3', 0, N'broad'),
+	('C3B70525-EA67-4E8C-BA71-7B1BC1F200F3', 1, N'well'),
+	('C3B70525-EA67-4E8C-BA71-7B1BC1F200F3', 0, N'full'),
+	('C3B70525-EA67-4E8C-BA71-7B1BC1F200F3', 0, N'wide');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('A0E663F7-8819-4311-BAA3-3EB87C9686F9', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'I suggest the room ______ before Christmas.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('A0E663F7-8819-4311-BAA3-3EB87C9686F9', 0, N'should decorate'),
+	('A0E663F7-8819-4311-BAA3-3EB87C9686F9', 1, N'is decorated'),
+	('A0E663F7-8819-4311-BAA3-3EB87C9686F9', 0, N'were decorated'),
+	('A0E663F7-8819-4311-BAA3-3EB87C9686F9', 0, N'be decorated');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('07431E5B-AD35-4F0D-8A02-C79B17AB402E', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'It is time every student ______ harder for the coming exam.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('07431E5B-AD35-4F0D-8A02-C79B17AB402E', 0, N'worked'),
+	('07431E5B-AD35-4F0D-8A02-C79B17AB402E', 1, N'should '),
+	('07431E5B-AD35-4F0D-8A02-C79B17AB402E', 0, N'works'),
+	('07431E5B-AD35-4F0D-8A02-C79B17AB402E', 0, N'work');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('C1817ABC-E121-4904-A1AA-33174DDF9549', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'Mr. Simpkims is the big ______ in the company as he has just been promoted to the position of Managing Director.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('C1817ABC-E121-4904-A1AA-33174DDF9549', 0, N'bread'),
+	('C1817ABC-E121-4904-A1AA-33174DDF9549', 1, N'meat'),
+	('C1817ABC-E121-4904-A1AA-33174DDF9549', 0, N'cheese'),
+	('C1817ABC-E121-4904-A1AA-33174DDF9549', 0, N'apple');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('E24904B4-98D5-455B-BADB-7BF94C66EF14', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'She is so ______ to her children that she has decided to quit her job to stay at home and look after Them.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('E24904B4-98D5-455B-BADB-7BF94C66EF14', 0, N'persistent'),
+	('E24904B4-98D5-455B-BADB-7BF94C66EF14', 1, N'kind'),
+	('E24904B4-98D5-455B-BADB-7BF94C66EF14', 0, N'responsible'),
+	('E24904B4-98D5-455B-BADB-7BF94C66EF14', 0, N'devoted');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('FD931CFA-D699-4B0B-A144-FE8B42F96B9F', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'The new sports complex ______ will accommodate an Olympic-sized swimming pool and others including fitness center, and a spa, to name just a few.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('FD931CFA-D699-4B0B-A144-FE8B42F96B9F', 0, N'supplies'),
+	('FD931CFA-D699-4B0B-A144-FE8B42F96B9F', 1, N'facilities'),
+	('FD931CFA-D699-4B0B-A144-FE8B42F96B9F', 0, N'categories'),
+	('FD931CFA-D699-4B0B-A144-FE8B42F96B9F', 0, N'qualities');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('6519CE30-CD6C-4D85-A7AD-6BBDD314D283', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'There ______ a number of reasons for the fall of the Roman Empire.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('6519CE30-CD6C-4D85-A7AD-6BBDD314D283', 0, N'are said being'),
+	('6519CE30-CD6C-4D85-A7AD-6BBDD314D283', 1, N'are said to have been'),
+	('6519CE30-CD6C-4D85-A7AD-6BBDD314D283', 0, N'said to be'),
+	('6519CE30-CD6C-4D85-A7AD-6BBDD314D283', 0, N'was said being');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('A15CCF2F-02F6-4F5D-965C-EAE90EF06E1C', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'It’s silly of him to spend a lot of money buying ______.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('A15CCF2F-02F6-4F5D-965C-EAE90EF06E1C', 0, N'a thick old wooden table'),
+	('A15CCF2F-02F6-4F5D-965C-EAE90EF06E1C', 1, N'a thick wooden old table'),
+	('A15CCF2F-02F6-4F5D-965C-EAE90EF06E1C', 0, N'an old wooden thick table'),
+	('A15CCF2F-02F6-4F5D-965C-EAE90EF06E1C', 0, N'a wooden thick old table');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('59B8F036-F974-4128-8200-7739DCD80879', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'It’s important to project a(n) ______ image during the interview.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('59B8F036-F974-4128-8200-7739DCD80879', 0, N'optimistic'),
+	('59B8F036-F974-4128-8200-7739DCD80879', 1, N'cheerful'),
+	('59B8F036-F974-4128-8200-7739DCD80879', 0, N'positive'),
+	('59B8F036-F974-4128-8200-7739DCD80879', 0, N'upbeat');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('E8741CBB-3FE8-4BDE-BB17-CA53A222DC3C', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'The man: “You haven’t lived here long, have you?”');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('E8741CBB-3FE8-4BDE-BB17-CA53A222DC3C', 0, N'A. Yes, I have just moved here.'),
+	('E8741CBB-3FE8-4BDE-BB17-CA53A222DC3C', 1, N'No, only three months.'),
+	('E8741CBB-3FE8-4BDE-BB17-CA53A222DC3C', 0, N'Yes, just a few days.'),
+	('E8741CBB-3FE8-4BDE-BB17-CA53A222DC3C', 0, N'No, I live here for a long time.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('82247083-19D8-4E2E-921A-45F06AE19734', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'Susan: “I have lost my purse.”');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('82247083-19D8-4E2E-921A-45F06AE19734', 0, N'It’s careless.'),
+	('82247083-19D8-4E2E-921A-45F06AE19734', 1, N'Oh, what a pity.'),
+	('82247083-19D8-4E2E-921A-45F06AE19734', 0, N'That’s nothing.'),
+	('82247083-19D8-4E2E-921A-45F06AE19734', 0, N'Oh, be careful.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('7317839E-E995-433F-8B39-73F07516FAA6', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'The president offered his congratulations to the players when they won the cup.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('7317839E-E995-433F-8B39-73F07516FAA6', 0, N'The president congratulated the players on their winning the match.'),
+	('7317839E-E995-433F-8B39-73F07516FAA6', 1, N'When they won the cup, the players had been offered some congratulations from the president.'),
+	('7317839E-E995-433F-8B39-73F07516FAA6', 0, N'The president would offered the players congratulations if they won the match.'),
+	('7317839E-E995-433F-8B39-73F07516FAA6', 0, N'The president congratulated that the players had won the cup.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('395CDB1A-CF54-4A36-9C28-C00F84A57FE1', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'A house in that district will cost at least $100,000.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('395CDB1A-CF54-4A36-9C28-C00F84A57FE1', 0, N'If you have $100,000, you can buy a house in that district.'),
+	('395CDB1A-CF54-4A36-9C28-C00F84A57FE1', 1, N'You won’t be able to buy a house in that district for less than $100,000.'),
+	('395CDB1A-CF54-4A36-9C28-C00F84A57FE1', 0, N'You won’t be able to buy a house in that district for more than $100,000.'),
+	('395CDB1A-CF54-4A36-9C28-C00F84A57FE1', 0, N'$100,000 is the maximum price for a house in that district.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('DAD99268-D22F-498B-BFD7-456C14FAABB5', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'To get to work on time, they have to leave at 6.00am.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('DAD99268-D22F-498B-BFD7-456C14FAABB5', 0, N'They always leave for work at 6.00am.'),
+	('DAD99268-D22F-498B-BFD7-456C14FAABB5', 1, N'They have to leave very early to catch a bus to work.'),
+	('DAD99268-D22F-498B-BFD7-456C14FAABB5', 0, N'Getting to work on time, for them, means leaving at 6.00am.'),
+	('DAD99268-D22F-498B-BFD7-456C14FAABB5', 0, N'Leaving at 6.00am, they have never been late for work.');
+GO
+
+INSERT INTO Question(QuestionId, QuizId, Level, Score, Content) 
+	VALUES('B51E7CF5-348B-4F36-AF07-808BE074FAA2', '8FEFC053-B23F-4B4F-9195-C218B5EA3574', 0, 20, 
+	N'The new restaurant looks good. However, it seems to have few customers.');
+GO
+INSERT INTO Answer(QuestionId, Correct, Content) VALUES
+	('B51E7CF5-348B-4F36-AF07-808BE074FAA2', 0, N'It was hard for ordinary people to judge between the fake painting and the real one, but not for the experts.'),
+	('B51E7CF5-348B-4F36-AF07-808BE074FAA2', 1, N'It was almost impossible for amateurs to realize that the painting was not authentic, though the experts could judge it quite easily.'),
+	('B51E7CF5-348B-4F36-AF07-808BE074FAA2', 0, N'The painting looked so much like the authentic one that only the experts could tell it wan’t genuine.'),
+	('B51E7CF5-348B-4F36-AF07-808BE074FAA2', 0, N'It was obvious that only a person with great talent could fake a painting so successfully.');
+GO
+/* -------- END Quiz: 8FEFC053-B23F-4B4F-9195-C218B5EA3574 (Đề thi môn Tiếng Anh)  ---------- */
+
+
+
 
 
 

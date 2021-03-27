@@ -1,0 +1,22 @@
+﻿@model SignInModel
+<div asp-validation-summary="All"></div>
+<form method="post">
+    <div>
+        <label asp-for="Usr">Username</label>
+        <input type="text" asp-for="Usr" />
+    </div>
+    <div>
+        <label asp-for="Pwd">Password</label>
+        <input type="password" asp-for="Pwd" />
+    </div>
+    <div>
+        <label asp-for="Rem">Remember me!</label>
+        <input type="checkbox" asp-for="Rem" />
+    </div>
+    <div>
+        <button>SignIn</button>
+    </div>
+</form>
+<div>
+    <p>Chưa có Account?  <a href="/auth/signup">Sign Up</a></p>
+</div>

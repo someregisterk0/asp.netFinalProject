@@ -7,7 +7,7 @@ namespace WebApp
     {
         public static byte[] Hash(string plaintext)
         {
-            HashAlgorithm hash = HashAlgorithm.Create("SHA512");
+            HashAlgorithm hash = HashAlgorithm.Create("SHA256");
             return hash.ComputeHash(Encoding.ASCII.GetBytes(plaintext));
         }
     }
