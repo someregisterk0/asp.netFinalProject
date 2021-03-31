@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Quiz>
+
+@*Quiz Index*@
+
+<div class="row">
+    <div class="col-3">
+        <p>Quiz Index</p>
+
+    </div>
+    <div class="col-9">
+        <table class="table table-borderless">
+            <tr>
+                <td><a href="/quiz/addquiz" class="btn btn-dark">Add Quiz</a></td>
+            </tr>
+        </table>
+        
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Title</th>
+                    <th>Total Score</th>
+                    <th>Edit</th>
+                    <th>Add Question</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Quiz item in Model)
+                {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.TotalScore</td>
+                    <td><a href="/quiz/eidt/@item.QuizId">Edit</a></td>
+                    <td><a href="/quiz/addquestion/@item.QuizId">Add Question</a></td>
+                    <td><a href="/take/takequiz/@item.QuizId">Làm bài Test</a></td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

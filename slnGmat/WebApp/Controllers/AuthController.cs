@@ -62,6 +62,10 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult SignUp(Member obj)
         {
+            //if (provider.Member.Add(obj) != 1)
+            //{
+                
+            //}
             provider.Member.Add(obj);
             return RedirectToAction("signin");
         }

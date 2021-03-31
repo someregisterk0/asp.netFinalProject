@@ -1,11 +1,29 @@
-﻿<div class="row">
+﻿@model IEnumerable<Quiz>
+
+@*Home Index*@
+
+<div class="row">
     <div class="col-3">
         <p>Home Index</p>
-        <h4><a href="/auth/signup">Sign Up</a></h4>
-        <h4><a href="/auth/signin">Sign In</a></h4>
+
     </div>
     <div class="col-9">
-
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Họ và Tên</th>
+                    <th>Lớp</th>
+                    <th>Đồ án cuối kháo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nguyễn Hữu Danh</td>
+                    <td>asp.net261T4TN</td>
+                    <td>Gmat</td>
+                </tr>   
+             </tbody>
+        </table>
     </div>
 </div>
 

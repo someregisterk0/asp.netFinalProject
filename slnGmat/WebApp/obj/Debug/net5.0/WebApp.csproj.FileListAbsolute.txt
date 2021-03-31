@@ -46,3 +46,6 @@ C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0
 C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Auth\Denied.cshtml.g.cs
 C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Auth\SignIn.cshtml.g.cs
 C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Auth\SignUp.cshtml.g.cs
+C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_LayoutAuthorize.cshtml.g.cs
+C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_LayoutNav.cshtml.g.cs
+C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Quiz\Index.cshtml.g.cs

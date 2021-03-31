@@ -17,8 +17,8 @@ namespace WebApp.Models
 
         public int Add(Member obj)
         {
-            string sql = "INSERT INTO Member (Username, Password, Email) VALUES (@Username, @Password, @Email)";
-            return connection.Execute(sql, new { Username = obj.Username, Password = Helper.Hash(obj.Password), Email = obj.Email });
+            string sql = "AddMember";
+            return connection.Execute(sql, new { Username = obj.Username, Password = Helper.Hash(obj.Password), Email = obj.Email }, commandType: CommandType.StoredProcedure);
         }
     }
 }

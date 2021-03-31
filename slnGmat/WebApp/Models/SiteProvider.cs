@@ -9,6 +9,19 @@ namespace WebApp.Models
         }
 
         MemberRepository member;
+        QuizRepository quiz;
+
+        public QuizRepository Quiz
+        {
+            get
+            {
+                if (quiz is null)
+                {
+                    quiz = new QuizRepository(Connection);
+                }
+                return quiz;
+            }
+        }
 
         public MemberRepository Member
         {

@@ -7,9 +7,9 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class HomeController : BaseController
+    public class QuizController : BaseController
     {
-        public HomeController(SiteProvider provider) : base(provider)
+        public QuizController(SiteProvider provider) : base(provider)
         {
         }
 
@@ -17,6 +17,5 @@ namespace WebApp.Controllers
         {
             return View(provider.Quiz.GetQuizs());
         }
-
     }
 }
