@@ -19,9 +19,16 @@ namespace WebApp.Models
             return connection.Query<Quiz>(sql);
         }
 
+        public Quiz GetQuizById(string id)
+        {
+            string sql = "SELECT * FROM Quiz WHERE QuizId = @Id";
+            return connection.QueryFirstOrDefault<Quiz>(sql, new { Id = id });
+        }
+
         public int Add(Quiz obj)
         {
-            return 1;
+            string sql = "AddQuiz";
+            return connection.Execute(sql, new { QuizId = obj.QuizId, MemberId = obj.MemberId, Title = obj.Title, TotalScore = obj.TotalScore, UpdatedAt = DateTime.Now.ToString("yyyy/MM/dd"), Note = obj.Note }, commandType: CommandType.StoredProcedure);
         }
     }
 }

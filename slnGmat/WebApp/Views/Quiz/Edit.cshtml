@@ -1,0 +1,23 @@
+﻿@model Quiz
+
+<form method="post">
+    <div class="visually-hidden">
+        <label>QuizId</label>
+        <input type="text" name="quizid" width="600" value="@Model.QuizId" />
+    </div>
+    <div>
+        <label>Title</label>
+        <input type="text" name="title" width="600" value="@Model.Title" />
+    </div>
+    <div>
+        <label>Total Score</label>
+        <input type="number" name="totalscore" value="@Model.TotalScore" />
+    </div>
+    <div>
+        <label>Note</label>
+        <input type="text" name="note" value="@Model.Note" />
+    </div>
+    <div>
+        <button>Save change</button>
+    </div>
+</form>

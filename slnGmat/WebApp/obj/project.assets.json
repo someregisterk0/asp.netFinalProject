@@ -481,19 +481,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Totoro\\.nuget\\packages\\": {}
+    "C:\\Users\\totoro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\Users\\Totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\WebApp.csproj",
-      "packagesPath": "C:\\Users\\Totoro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\obj\\",
+      "projectPath": "C:\\Users\\totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\WebApp.csproj",
+      "packagesPath": "C:\\Users\\totoro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\totoro\\source\\repos\\asp.netFinalProject\\slnGmat\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Totoro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\totoro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -546,7 +546,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

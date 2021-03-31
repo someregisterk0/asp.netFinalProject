@@ -27,14 +27,13 @@
             <tbody>
                 @foreach (Quiz item in Model)
                 {
-                <tr>
-                    <td>@item.Title</td>
-                    <td>@item.TotalScore</td>
-                    <td><a href="/quiz/eidt/@item.QuizId">Edit</a></td>
-                    <td><a href="/quiz/addquestion/@item.QuizId">Add Question</a></td>
-                    <td><a href="/take/takequiz/@item.QuizId">Làm bài Test</a></td>
-                </tr>
-
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.TotalScore</td>
+                        <td><a href="/quiz/edit/@item.QuizId">Edit</a></td>
+                        <td><a href="/quiz/addquestion/@item.QuizId">Add Question</a></td>
+                        <td><a href="/take/takequiz/@item.QuizId">Làm bài Test</a></td>
+                    </tr>
                 }
             </tbody>
         </table>

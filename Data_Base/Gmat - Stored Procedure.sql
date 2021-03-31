@@ -33,8 +33,13 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Quiz (MemberId, Title, TotalScore, UpdatedAt, Note) 
-				VALUES (@MemberId, @Title, @TotalScore, @UpdatedAt, @Note)
+			UPDATE Quiz SET
+				MemberId = @MemberId,
+				Title = @Title,
+				TotalScore = @TotalScore,
+				UpdatedAt = @UpdatedAt,
+				Note = @Note
+			WHERE QuizId = @QuizId
 		END
 END
 GO

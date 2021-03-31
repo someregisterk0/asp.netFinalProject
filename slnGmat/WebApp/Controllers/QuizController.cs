@@ -17,5 +17,21 @@ namespace WebApp.Controllers
         {
             return View(provider.Quiz.GetQuizs());
         }
+
+        public IActionResult Edit(string id)
+        {
+            return View(provider.Quiz.GetQuizById(id));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Quiz obj)
+        {
+            Quiz q = provider.Quiz.GetQuizById(obj.QuizId.ToString());
+            q.Title = obj.Title;
+            q.TotalScore = obj.TotalScore;
+            q.Note = obj.Note;
+            provider.Quiz.Add(q);
+            return Redirect("/quiz/index");
+        }
     }
 }
