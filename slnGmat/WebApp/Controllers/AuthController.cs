@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,18 @@ namespace WebApp.Controllers
                     IsPersistent = obj.Rem
                 };
                 HttpContext.SignInAsync(principal, properties);
+
+                //Lưu MemberId vào Cookie
+                if (Request.Cookies["memberId"] is null)
+                {
+                    CookieOptions options = new CookieOptions
+                    {
+                        Path = "/",
+                        Expires = DateTime.UtcNow.AddDays(30)
+                    };
+                    Response.Cookies.Append("memberId", member.MemberId.ToString(), options);
+                }
+
                 return Redirect("/");
             }
             else

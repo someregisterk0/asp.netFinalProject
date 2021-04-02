@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Question>
+
+@*Question Index, load danh sách question*@
+
+<div class="row">
+    <div class="col-3">
+        <p>Question Index</p>
+
+    </div>
+    <div class="col-9">
+        <div>
+            <h3>@ViewBag.QuizTitle</h3>
+        </div>
+        <table class="table table-borderless">
+            <tr>
+                <td><a href="/question/addquestion" class="btn btn-dark">Add Question</a></td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Active</th>
+                    <th>Content</th>
+                    <th>Score</th>
+                    <th>Level</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Question item in Model)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="active" checked="@item.Active" /></td>
+                        <td>@item.Content</td>
+                        <td>@item.Score</td>
+                        <td>@item.Level</td>
+                        <td><a href="/question/edit/@item.QuestionId">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

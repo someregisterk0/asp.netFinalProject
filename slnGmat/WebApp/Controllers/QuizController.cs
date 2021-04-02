@@ -15,10 +15,10 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(provider.Quiz.GetQuizs());
+            return View(provider.Quiz.GetQuizes());
         }
 
-        public IActionResult Edit(string id)
+        public IActionResult Edit(Guid id)
         {
             return View(provider.Quiz.GetQuizById(id));
         }
@@ -26,11 +26,28 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Edit(Quiz obj)
         {
-            Quiz q = provider.Quiz.GetQuizById(obj.QuizId.ToString());
+            Quiz q = provider.Quiz.GetQuizById(obj.QuizId);
             q.Title = obj.Title;
             q.TotalScore = obj.TotalScore;
             q.Note = obj.Note;
             provider.Quiz.Add(q);
+            return Redirect("/quiz/index");
+        }
+
+        public IActionResult AddQuiz()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddQuiz(Quiz obj)
+        {
+            if (Request.Cookies["memberId"] != null)
+            {
+                obj.MemberId = Guid.Parse(Request.Cookies["memberId"]);
+                obj.QuizId = Guid.NewGuid();
+                provider.Quiz.Add(obj);
+            }
             return Redirect("/quiz/index");
         }
     }

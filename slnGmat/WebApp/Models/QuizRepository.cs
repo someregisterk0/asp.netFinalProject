@@ -13,16 +13,16 @@ namespace WebApp.Models
         {
         }
 
-        public IEnumerable<Quiz> GetQuizs()
+        public IEnumerable<Quiz> GetQuizes()
         {
             string sql = "SELECT * FROM Quiz";
             return connection.Query<Quiz>(sql);
         }
 
-        public Quiz GetQuizById(string id)
+        public Quiz GetQuizById(Guid id)
         {
             string sql = "SELECT * FROM Quiz WHERE QuizId = @Id";
-            return connection.QueryFirstOrDefault<Quiz>(sql, new { Id = id });
+            return connection.QueryFirstOrDefault<Quiz>(sql, new { Id = id.ToString() });
         }
 
         public int Add(Quiz obj)

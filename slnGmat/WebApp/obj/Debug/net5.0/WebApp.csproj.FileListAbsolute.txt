@@ -50,3 +50,5 @@ C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0
 C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_LayoutNav.cshtml.g.cs
 C:\Users\Totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Quiz\Index.cshtml.g.cs
 C:\Users\totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Quiz\Edit.cshtml.g.cs
+C:\Users\totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Quiz\AddQuiz.cshtml.g.cs
+C:\Users\totoro\source\repos\asp.netFinalProject\slnGmat\WebApp\obj\Debug\net5.0\Razor\Views\Question\Index.cshtml.g.cs

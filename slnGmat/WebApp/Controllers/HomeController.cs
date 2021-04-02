@@ -15,7 +15,7 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(provider.Quiz.GetQuizs());
+            return View(provider.Quiz.GetQuizes());
         }
 
     }
