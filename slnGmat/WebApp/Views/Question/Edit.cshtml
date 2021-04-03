@@ -1,0 +1,27 @@
+﻿@model Question;
+
+<form method="post">
+    <div hidden>
+        <label>QuizId</label>
+        <input type="text" name="quizid" readonly value="@Model.QuizId" />
+    </div>
+    <div hidden>
+        <label>QuestionId</label>
+        <input type="text" name="questionid" readonly value="@Model.QuestionId" />
+    </div>
+    <div>
+        <label>Content</label>
+        <input type="text" name="content" value="@Model.Content" />
+    </div>
+    <div>
+        <label>Level</label>
+        <input type="number" name="level" value="@Model.Level" />
+    </div>
+    <div>
+        <label>Score</label>
+        <input type="number" name="score" value="@Model.Score" />
+    </div>
+    <div>
+        <button>Save Change</button>
+    </div>
+</form>

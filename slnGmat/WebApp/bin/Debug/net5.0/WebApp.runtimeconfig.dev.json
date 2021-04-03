@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\totoro\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\totoro\\.nuget\\packages"
+      "C:\\Users\\Totoro\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Totoro\\.nuget\\packages"
     ]
   }
 }

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Answer>;
+
+@*Answer Index*@
+
+<p id="questionid" qid="@ViewBag.QuestionId"></p>
+<div class="row">
+    <div class="col-3">
+        <p>Answer Index</p>
+        <p>Click vào checkbox để Active/Inactive answer.</p>
+    </div>
+    <div class="col-9">
+        <div>
+            <h3>@ViewBag.QuestionContent</h3>
+        </div>
+
+        <br />
+        <table class="table table-borderless">
+            <tr>
+                <td><btn @*href="/answer/add/@ViewBag.QuestionId"*@ id="addbtn" class="btn btn-dark">Add Answer</btn></td>
+            </tr>
+        </table>
+
+        <br />
+        <div id="add" class="invisible" style="display: none;">
+            <form method="post">
+                <div>
+                    <label>Content</label>
+                    <textarea class="acont" type="text" name="content" ></textarea>
+                </div>
+                <div><button class="s">Save</button></div>
+            </form>
+        </div>
+        <br />
+
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Active</th>
+                    <th>Content</th>
+                    <th>Correct</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="sheet">
+                @foreach (Answer item in Model)
+                {
+                    <tr>
+                        <td><input type="checkbox" class="a" value="@item.AnswerId" checked="@item.Active" /></td>
+                        <td>@item.Content</td>
+                        <td><input type="radio" class="r" qid="@ViewBag.QuestionId" name="correct" value="@item.AnswerId" checked="@item.Correct" /></td>
+                        <td>@item.Type</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    //Active, Inactive
+    $('.a').click(function () {
+        var aid = $(this).val();
+        console.log(aid);
+        $.post('/answer/active', { id: aid });
+    });
+
+    //Radio correct
+    $('.r').click(function () {
+        var aid = $(this).val();
+        var qid = $(this).attr('qid');
+        console.log(aid);
+        console.log(qid);
+        $.post('/answer/correct', { answerid: aid, questionid: qid });
+    });
+
+    $("#addbtn").click(function () {
+        //$('#add').append('<form method="post"><div><label>Answer Content </label><textarea  type="text" class="acont" name="content" rows="4" cols="50" ></textarea></div><div><button class="s">Save</button></div></form>');
+        $('#add').slideToggle();
+        $('#add').css('display', '');
+        $('#add').removeClass('invisible');
+    });
+
+    $(".s").click(function () {
+        var cont = $('.acont').val();
+        var qid = $('#questionid').attr('qid');
+        console.log(cont);
+        console.log(qid);
+        $.post('/answer/add', { questionid: qid, content: cont }, function (o) {
+            consol.log(o);
+        });
+        $('#add').slideToggle();
+    });
+</script>
