@@ -11,5 +11,35 @@
         <div>
             <h2>@ViewBag.Quiz.Title</h2>
         </div>
+        <br /> 
+        @foreach (var ques in Model)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <div class="fw-bold">Câu số: @ques.CauSo</div>
+                        <td colspan="2"><div class="fw-bold">@ques.Content</div></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ans in ques.ListAnswer)
+                    {
+                        <tr>
+                            <td width="35">
+                                    <input type="radio" name="ans.AnswerId" />
+                            </td>
+                            <td>
+                                <div>@ans.Content</div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br /><br />
+        }
+        <center class="btn">
+            <button class="btn-primary">Nộp bài</button>
+            <button class="btn-danger">Exit</button>
+        </center>
     </div>
 </div>

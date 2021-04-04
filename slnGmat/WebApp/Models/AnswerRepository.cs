@@ -36,5 +36,28 @@ namespace WebApp.Models
             string sql = "SetCorrectAnswer";
             return connection.Execute(sql, new { AnswerId = obj.AnswerId, QuestionId = obj.QuestionId.ToString() }, commandType: CommandType.StoredProcedure);
         }
+
+        public IEnumerable<Question> GetAnswerForQuestions(Guid takeId, IEnumerable<Question> questions)
+        {
+            short cauSo = 1;
+            foreach (Question ques in questions)
+            {
+                ques.CauSo = cauSo;  // Số thứ tự câu hỏi trong 1 bài test
+                cauSo++;
+                ques.ListAnswer = new List<Answer>();
+                //Lấy danh sách câu trả lời  cho câu hỏi
+                string sql = "SELECT * FROM Answer WHERE QuestionId = @QuestionId ORDER BY NEWID()";
+                IEnumerable<Answer> answers = connection.Query<Answer>(sql, new { QuestionId = ques.QuestionId });
+                if (answers != null)
+                {
+                    foreach (Answer ans in answers)
+                    {
+                        ques.ListAnswer.Add(ans); // thêm danh sách câu trả lời vào mỗi câu hỏi
+                    }
+                }
+            }
+
+            return questions;
+        }
     }
 }

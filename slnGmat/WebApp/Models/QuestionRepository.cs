@@ -19,23 +19,31 @@ namespace WebApp.Models
             return connection.Query<Question>(sql, new { QuizId = quizId.ToString() });
         }
 
+        // Lấy list question MỚI
         public IEnumerable<Question> GetQuestionsForTest(Guid quizId)
         {
             string sql = "SELECT TOP 5 * FROM Question WHERE QuizId = @QuizId ORDER BY NEWID()";
-            IEnumerable<Question> questions =  connection.Query<Question>(sql, new { QuizId = quizId.ToString() });
-            foreach (Question ques in questions)
+            IEnumerable<Question> questions = connection.Query<Question>(sql, new { QuizId = quizId.ToString() });
+            
+            return questions;
+        }
+
+        // Lấy list question CŨ
+        public IEnumerable<Question> GetQuestionsForTest2(Guid takeId)
+        {
+            // Lấy list question (cũ) cho bài test (vì take có rồi)
+            // Lấy từ TakeAnswer
+            string sql = "GetQuestionIdsFromTake";
+            IEnumerable<Ques> questionIds = connection.Query<Ques>(sql, new { TakeId = takeId.ToString() }, commandType: CommandType.StoredProcedure);
+
+            List<Question> questions = new List<Question>();
+            sql = "SELECT * FROM Question WHERE QuestionId = @QuestionId";
+            foreach (Ques item in questionIds)
             {
-                sql = "SELECT * FROM Answer WHERE QuestionId = @QuestionId ORDER BY NEWID()";
-                IEnumerable<Answer> answers = connection.Query<Answer>(sql, new { QuestionId = ques.QuestionId });
-                if (answers != null)
-                {
-                    foreach (Answer ans in answers)
-                    {
-                        ques.ListAnswer = new List<Answer>();
-                        ques.ListAnswer.Append(ans);
-                    }
-                }
+                Question q = connection.QuerySingleOrDefault<Question>(sql, new { QuestionId = item.QuestionId.ToString()});
+                questions.Add(q);
             }
+
             return questions;
         }
 
@@ -51,7 +59,7 @@ namespace WebApp.Models
             return connection.Execute(sql, new { QuestionId = obj.QuestionId }, commandType: CommandType.StoredProcedure);
         }
 
-        public int Edit(Question obj) 
+        public int Edit(Question obj)
         {
             string sql = "EditQuestion";
             return connection.Execute(sql, new { QuestionId = obj.QuestionId, Level = obj.Level, Score = obj.Score, Content = obj.Content, UpdatedAt = DateTime.Now.ToString("yyyy/MM/dd") }, commandType: CommandType.StoredProcedure);

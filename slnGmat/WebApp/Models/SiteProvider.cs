@@ -13,6 +13,19 @@ namespace WebApp.Models
         QuestionRepository question;
         AnswerRepository answer;
         TakeRepository take;
+        TakeAnswerRepository takeAnswer;
+
+        public TakeAnswerRepository TakeAnswer
+        {
+            get
+            {
+                if (takeAnswer is null)
+                {
+                    takeAnswer = new TakeAnswerRepository(Connection);
+                }
+                return takeAnswer;
+            }
+        }
 
         public TakeRepository Take
         {

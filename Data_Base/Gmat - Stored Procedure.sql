@@ -54,7 +54,7 @@ CREATE PROC ActiveQuestion(
 AS
 BEGIN
 	IF EXISTS(SELECT * FROM Question WHERE QuestionId = @QuestionId)
-		UPDATE Question SET Active = ~Active WHERE QuestionId = @QuestionId;
+		UPDATE Question SET Active = ~Active, UpdatedAt = GETDATE() WHERE QuestionId = @QuestionId;
 	ELSE
 		RETURN 0;
 END
@@ -105,7 +105,7 @@ CREATE PROC ActiveAnswer(
 AS
 BEGIN
 	IF EXISTS(SELECT * FROM Answer WHERE AnswerId = @AnswerId)
-		UPDATE Answer SET Active = ~Active WHERE AnswerId = @AnswerId;
+		UPDATE Answer SET Active = ~Active, UpdatedAt = GETDATE() WHERE AnswerId = @AnswerId;
 	ELSE
 		RETURN 0;
 END
@@ -121,8 +121,8 @@ AS
 BEGIN
 	DECLARE @aid INT;
 	SET @aid = (SELECT TOP 1 AnswerId FROM Answer WHERE QuestionId = @QuestionId AND Correct = 1);
-	UPDATE Answer SET Correct = 0 WHERE AnswerId = @aid;
-	UPDATE Answer SET Correct = 1 WHERE AnswerId = @AnswerId;
+	UPDATE Answer SET Correct = 0, UpdatedAt = GETDATE() WHERE AnswerId = @aid;
+	UPDATE Answer SET Correct = 1, UpdatedAt = GETDATE() WHERE AnswerId = @AnswerId;
 END
 GO
 
@@ -166,4 +166,62 @@ BEGIN
 END
 GO
 
-select * from Take
+
+--Tạo một TakeAnswer khi trả lời câu hỏi
+CREATE PROC AddTakeAnswer(
+	@TakeId UNIQUEIDENTIFIER,
+	@QuestionId UNIQUEIDENTIFIER,
+	@AnswerId INT,
+	@Active BIT = 0
+)
+AS
+BEGIN
+	INSERT INTO TakeAnswer(TakeId, QuestionId, AnswerId, Active)
+		VALUES (@TakeId, @QuestionId, @AnswerId, @Active);
+END
+GO
+
+
+-- Active TakeAnswer
+CREATE PROC SetActiveTakeAnswer(
+	@TakeId UNIQUEIDENTIFIER,
+	@QuestionId UNIQUEIDENTIFIER,
+	@AnswerId INT
+)
+AS
+BEGIN
+	UPDATE TakeAnswer SET
+		Active = 0,
+		UpdatedAt = GETDATE()
+		WHERE TakeId = @TakeId AND QuestionId = @QuestionId AND Active = 1;
+	UPDATE TakeAnswer SET
+		Active = 1,
+		UpdatedAt = GETDATE()
+		WHERE TakeId = @TakeId AND QuestionId = @QuestionId AND AnswerId = @AnswerId;
+END
+GO
+
+
+--Lấy danh sách QuestionId từ Take, TakeAnswer (khi Take đã tồn tại)
+alter PROC GetQuestionIdsFromTake(
+	@TakeId UNIQUEIDENTIFIER
+)
+AS
+BEGIN
+	SELECT Q.QuestionId INTO Ques FROM 
+		Question AS Q JOIN TakeAnswer AS TA ON TA.QuestionId = Q.QuestionId JOIN Take ON TA.TakeId = Take.TakeId
+		WHERE Take.TakeId = @TakeId
+		GROUP BY Q.QuestionId;
+END
+GO
+select * From Ques
+select * from Take where Take.TakeId = '7ef3e069-6c35-4c3c-9080-ea6efeca54e1'
+select * from TakeAnswer where TakeAnswer.TakeId = '7ef3e069-6c35-4c3c-9080-ea6efeca54e1'
+
+exec GetQuestionIdsFromTake @TakeId = '39183eb2-3543-4f41-87b1-60da334b08df'
+
+exec GetQuestionIdsFromTake @TakeId = '74da3f27-4d7f-4ded-bc04-7f96a0172bbc'
+
+SELECT * FROM TakeAnswer AS TA JOIN Take ON TA.TakeId = Take.TakeId and take.TakeId = '4AB69F3D-F223-476C-BBB5-FF313ABB3771'
+select Question.QuestionId from Question JOIN Answer ON Question.QuestionId = Answer.QuestionId GROUP BY Question.QuestionId;
+select * from TakeAnswer
