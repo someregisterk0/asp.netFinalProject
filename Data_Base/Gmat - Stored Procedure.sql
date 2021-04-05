@@ -1,4 +1,7 @@
-﻿--Thêm member vào khi SignIn
+﻿USE Gmat;
+GO
+
+--Thêm member vào khi SignIn
 CREATE PROC AddMember(
 	@Username VARCHAR(32),
 	@Password VARBINARY(64),
@@ -138,13 +141,12 @@ GO
 CREATE PROC AddTake(
 	@TakeId UNIQUEIDENTIFIER,
 	@MemberId UNIQUEIDENTIFIER, 
-	@QuizId UNIQUEIDENTIFIER,
-	@StartsAt DATETIME
+	@QuizId UNIQUEIDENTIFIER
 )
 AS
 BEGIN
 	INSERT INTO Take (TakeId, MemberId, QuizId, StartsAt)
-		VALUES (@TakeId, @MemberId, @QuizId, @StartsAt)
+		VALUES (@TakeId, @MemberId, @QuizId, GETDATE())
 END
 GO
 
@@ -154,14 +156,13 @@ CREATE PROC FinishTake(
 	@TakeId UNIQUEIDENTIFIER,
 	@MemberId UNIQUEIDENTIFIER,
 	@QuizId UNIQUEIDENTIFIER,
-	@Score TINYINT,
-	@FinishedAt DATETIME
+	@Score TINYINT
 )
 AS
 BEGIN
 	UPDATE Take SET 
 		Score = @Score,
-		FinishedAt = @FinishedAt
+		FinishedAt = GETDATE()
 		WHERE TakeId = @TakeId AND MemberId = @MemberId AND QuizId = @QuizId;
 END
 GO
@@ -190,10 +191,12 @@ CREATE PROC SetActiveTakeAnswer(
 )
 AS
 BEGIN
+-- Đầu tiên set Active = 0 câu trả lời được chọn TRƯỚC về false (where theo Active = 1)
 	UPDATE TakeAnswer SET
 		Active = 0,
 		UpdatedAt = GETDATE()
 		WHERE TakeId = @TakeId AND QuestionId = @QuestionId AND Active = 1;
+-- Sau đó set Active = 1 câu trả lời ĐANG chọn (where theo AnswerId = @AnswerId)
 	UPDATE TakeAnswer SET
 		Active = 1,
 		UpdatedAt = GETDATE()
@@ -203,25 +206,35 @@ GO
 
 
 --Lấy danh sách QuestionId từ Take, TakeAnswer (khi Take đã tồn tại)
-alter PROC GetQuestionIdsFromTake(
+CREATE PROC GetQuestionIdsFromTake(
 	@TakeId UNIQUEIDENTIFIER
 )
 AS
 BEGIN
-	SELECT Q.QuestionId INTO Ques FROM 
+	SELECT Q.QuestionId FROM 
 		Question AS Q JOIN TakeAnswer AS TA ON TA.QuestionId = Q.QuestionId JOIN Take ON TA.TakeId = Take.TakeId
 		WHERE Take.TakeId = @TakeId
 		GROUP BY Q.QuestionId;
 END
 GO
-select * From Ques
-select * from Take where Take.TakeId = '7ef3e069-6c35-4c3c-9080-ea6efeca54e1'
-select * from TakeAnswer where TakeAnswer.TakeId = '7ef3e069-6c35-4c3c-9080-ea6efeca54e1'
 
-exec GetQuestionIdsFromTake @TakeId = '39183eb2-3543-4f41-87b1-60da334b08df'
 
-exec GetQuestionIdsFromTake @TakeId = '74da3f27-4d7f-4ded-bc04-7f96a0172bbc'
+--Tính điểm
+CREATE PROC Score(
+	@TakeId UNIQUEIDENTIFIER
+)
+AS
+BEGIN
+	DECLARE @Score TINYINT;
+	SELECT @Score = SUM (Q.Score) FROM 
+		Take AS T JOIN TakeAnswer AS TA ON T.TakeId = TA.TakeId 
+		JOIN Answer AS A ON TA.AnswerId = A.AnswerId 
+		JOIN Question AS Q ON A.QuestionId = Q.QuestionId 
+		WHERE T.TakeId = @TakeId AND TA.Active = A.Correct AND A.Correct = 1
+	RETURN @Score;
+END
+GO
 
-SELECT * FROM TakeAnswer AS TA JOIN Take ON TA.TakeId = Take.TakeId and take.TakeId = '4AB69F3D-F223-476C-BBB5-FF313ABB3771'
-select Question.QuestionId from Question JOIN Answer ON Question.QuestionId = Answer.QuestionId GROUP BY Question.QuestionId;
-select * from TakeAnswer
+SELECT SUM (Q.Score) FROM Take AS T JOIN TakeAnswer AS TA ON T.TakeId = TA.TakeId JOIN Answer AS A ON TA.AnswerId = A.AnswerId JOIN Question AS Q ON A.QuestionId = Q.QuestionId WHERE T.TakeId = 'f61d1baa-e18e-457d-a950-95ed666f9208' AND TA.Active = A.Correct AND A.Correct = 1
+GO
+

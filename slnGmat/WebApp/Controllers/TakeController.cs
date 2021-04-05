@@ -23,13 +23,20 @@ namespace WebApp.Controllers
 
         public IActionResult Test(Guid id) // id là QuizId
         {
+            /* 
+             * Take = bài test
+             * TakeAnswer = câu trả lời của member
+            */
+            // Quiz
+            ViewBag.Quiz = provider.Quiz.GetQuizById(id);
+            Take obj = new Take();
+
             if (Request.Cookies["memberId"] != null)
             {
-                Take obj = new Take();
                 obj.MemberId = Guid.Parse(Request.Cookies["memberId"]);
                 obj.QuizId = id;
-                //Quiz
-                ViewBag.Quiz = provider.Quiz.GetQuizById(id);
+                IEnumerable<Question> questions;
+
                 if (Request.Cookies["takeId"] is null)
                 {
                     CookieOptions options = new CookieOptions
@@ -39,39 +46,96 @@ namespace WebApp.Controllers
                     };
                     Guid takeId = Guid.NewGuid();
                     Response.Cookies.Append("takeId", takeId.ToString(), options);
-                    
+
                     obj.TakeId = takeId;
-                    provider.Take.Add(obj); // Tạo mời take
+                    provider.Take.Add(obj); // Tạo mới take trong DB
 
-                    //Lấy list question (mới) cho bài test
-                    IEnumerable<Question> questions = provider.Question.GetQuestionsForTest(id);
+                    // Lấy list question (mới) cho bài test
+                    questions = provider.Question.GetQuestionsForTest(id);
 
-                    provider.Answer.GetAnswerForQuestions(obj.TakeId, questions);  //Lấy danh sách câu trả lời  cho câu hỏi
+                    provider.Answer.GetAnswerForQuestions(obj.TakeId, questions);  // Lấy danh sách câu trả lời cho từng câu hỏi
 
                     provider.TakeAnswer.InsertTakeAnswer(obj.TakeId, questions);   // Tạo takeanswer cho danh sách câu hỏi vừa mới lấy
-
-                    return View(questions);
                 }
                 else
                 {
+                    //take có rồi, không cần tạo mới, lấy ra từ cookies
                     obj.TakeId = Guid.Parse(Request.Cookies["takeId"]);
-                    //take có rồi, không cần tạo mới
 
                     // Lấy list question (cũ) cho bài test (vì take có rồi)
-                    IEnumerable<Question> questions = provider.Question.GetQuestionsForTest2(obj.TakeId);
+                    questions = provider.Question.GetQuestionsForTest2(obj.TakeId);
 
-                    provider.Answer.GetAnswerForQuestions(obj.TakeId, questions);  //Lấy danh sách câu trả lời  cho câu hỏi
+                    provider.Answer.GetAnswerForQuestions(obj.TakeId, questions);  // Lấy danh sách câu trả lời cho từng câu hỏi
 
-                    //lấy takeanswer đã active (nếu có) cho questions
-                    foreach (var ques in questions)
-                    {
-                        provider.TakeAnswer.GetTakeAnswerActiveForAQuestion(obj.TakeId, ques);
-                    }
+                    //lấy takeanswer đã active (nếu có) cho questions (câu trả lời được chọn)
+                    provider.TakeAnswer.GetTakeAnswerActiveForAQuestions(obj.TakeId, questions);
+                }
+                ViewBag.takeId = obj.TakeId;
+                questions = Helper.SortQuestion(questions.ToList());
+                return View(questions);
+            }
+            else
+            {
+                return Redirect("/auth/signin");
+            }
+        }
 
-                    return View(questions);
+        public IActionResult Exit()
+        {
+            if (Request.Cookies["takeId"] is not null)
+            {
+                Response.Cookies.Delete("takeId");
+            }
+            return Redirect("/quiz/index");
+        }
+
+        public IActionResult Finish(Guid id) // id là QuizId
+        {
+            if (Request.Cookies["memberId"] != null)
+            {
+                if (Request.Cookies["takeId"] is not null)
+                {
+                    Guid takeId = Guid.Parse(Request.Cookies["takeId"]);
+                    Guid memeberId = Guid.Parse(Request.Cookies["memberId"]);
+                    Guid quizId = id;
+                    provider.Take.Finish(quizId, takeId, memeberId);
+
+                    Response.Cookies.Delete("takeId");
                 }
             }
+            else
+            {
+                Redirect("/auth/signin");
+            }
+            return Redirect("/quiz/index");
+        }
+
+        public IActionResult Result(Guid id)
+        {
+            if (Request.Cookies["memberId"] != null)
+            {
+                Guid memberId = Guid.Parse(Request.Cookies["memberId"]);
+                ViewBag.Quiz = provider.Quiz.GetQuizById(id);
+                return View(provider.Take.GetTakes(id, memberId)); 
+            }
             return View();
+        }
+
+        public int CheckTakeCookie()
+        {
+            if (Request.Cookies["takeId"] != null)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        public void RemoveTakeCookie()
+        {
+            if (Request.Cookies["takeId"] != null)
+            {
+                Response.Cookies.Delete("takeId");
+            }
         }
     }
 }

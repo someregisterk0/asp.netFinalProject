@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Question>
-
 @*Test*@
 
 <div class="row">
@@ -11,7 +10,7 @@
         <div>
             <h2>@ViewBag.Quiz.Title</h2>
         </div>
-        <br /> 
+        <br />
         @foreach (var ques in Model)
         {
             <table>
@@ -25,12 +24,36 @@
                     @foreach (var ans in ques.ListAnswer)
                     {
                         <tr>
-                            <td width="35">
-                                    <input type="radio" name="ans.AnswerId" />
-                            </td>
-                            <td>
-                                <div>@ans.Content</div>
-                            </td>
+                            @if (ques.TakeAnswerChosen is not null)
+                            {
+                                @if (ques.TakeAnswerChosen.AnswerId == ans.AnswerId && ques.TakeAnswerChosen.Active == true)
+                                {
+                                    <td width="35">
+                                        <input type="radio" class="r" checked name="@ques.QuestionId" tid="@ViewBag.takeId" aid="@ans.AnswerId" />
+                                    </td>
+                                    <td>
+                                        <div>@ans.Content</div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td width="35">
+                                        <input type="radio" class="r" name="@ques.QuestionId" tid="@ViewBag.takeId" aid="@ans.AnswerId" />
+                                    </td>
+                                    <td>
+                                        <div>@ans.Content</div>
+                                    </td>
+                                }
+                            }
+                            else
+                            {
+                                <td width="35">
+                                    <input type="radio" class="r" name="@ques.QuestionId" tid="@ViewBag.takeId" aid="@ans.AnswerId" />
+                                </td>
+                                <td>
+                                    <div>@ans.Content</div>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>
@@ -38,8 +61,64 @@
             <br /><br />
         }
         <center class="btn">
-            <button class="btn-primary">Nộp bài</button>
-            <button class="btn-danger">Exit</button>
+            <button id="BtnNopBai" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NopBaiModal">
+                Nộp Bài
+            </button>
+            <button action="/take/exit" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ExitModal">
+                Exit
+            </button>
         </center>
     </div>
 </div>
+
+<!-- Modal cho btn Exit -->
+<form>
+    <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Exit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Thoát và Hủy bài thi?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="/take/exit"><button id="BtnExit" type="button" class="btn btn-danger">Exit</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal cho btn Nộp bài -->
+<form>
+    <div class="modal fade" id="NopBaiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Exit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Hoàn thành bài thi và nộp bài?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="/take/Finish/@ViewBag.Quiz.QuizId"><button id="BtnNopBai" type="button" class="btn btn-danger">Nộp Bài</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    // Lưu câu trả lời được chọn vào DB
+    $('.r').click(function () {
+        var tid = $(this).attr('tid');
+        var qid = $(this).attr('name');
+        var aid = $(this).attr('aid');
+        $.post('/takeanswer/chosen', { takeId: tid, questionId: qid, answerId: aid });
+    });
+</script>

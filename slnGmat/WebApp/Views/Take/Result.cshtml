@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Take>
+
+<h3>@ViewBag.Quiz.Title</h3>
+<table class="table table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <td>Start</td>
+            <td>Finish</td>
+            <td>Score</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Take item in Model)
+        {
+            <tr>
+                <td>@item.StartsAt.</td>
+                <td>@item.FinishedAt.</td>
+                <td>@item.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>

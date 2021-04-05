@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Quiz>
-
 @*Quiz Index*@
 
 <div class="row">
@@ -10,34 +9,96 @@
     <div class="col-9">
         <table class="table table-borderless">
             <tr>
-                <td><a href="/quiz/addquiz" class="btn btn-dark">Add Quiz</a></td>
+                @if (@User.Identity.Name == "admin")
+                {
+                    <td><a href="/quiz/addquiz" class="btn btn-dark">Add Quiz</a></td>
+                }
             </tr>
         </table>
-        
+
         <table class="table table-bordered">
             <thead class="table-primary">
                 <tr>
                     <th>Title</th>
                     <th>Total Score</th>
-                    <th>Edit</th>
-                    <th>Add Question</th>
-                    <th></th>
+                    @if (@User.Identity.Name == "admin")
+                    {
+                        <th>Edit</th>
+                        <th>Add Question</th>
+                    }
+                    else
+                    {
+                        <th colspan="2" class="text-center">Bài thi</th>
+                    }
                 </tr>
             </thead>
             <tbody>
                 @foreach (Quiz item in Model)
                 {
-                    <tr>
-                        <td>@item.Title</td>
-                        <td>@item.TotalScore</td>
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.TotalScore</td>
+                    @if (@User.Identity.Name == "admin")
+                    {
                         <td><a href="/quiz/edit/@item.QuizId">Edit</a></td>
                         <td><a href="/question/index/@item.QuizId">List Question</a></td>
-                        <td><a href="/take/test/@item.QuizId">Làm bài Test</a></td>
-                    </tr>
+                    }
+                    else
+                    {
+                        <td><a class="t" qid="@item.QuizId" @*data-bs-toggle="modal" data-bs-target="#exampleModal"*@>Làm bài Test</a></td>
+                        <td><a href="/take/result/@item.QuizId">Xem kết quả</a></td>
+                    }
+                </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn vẫn còn bài thi chưa hoàn thành.</p>
+                <p>Bạn có muốn làm tiếp.</p>
+            </div>
+            <div class="modal-footer">
+                <a id="BtnYes" class="btn btn-primary">Có! tiếp tục làm</a>
+                <a id="BtnNo" class="btn btn-danger" data-bs-dismiss="modal">Không! Làm bài thi khác</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var id;
+
+    $('.t').click(function () {
+        id = $(this).attr('qid');
+        $.post('/take/checktakecookie', function (ret) {
+            if (ret == 1) {
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                myModal.show();
+            } else {
+                window.location.href = '/take/test/' + id;
+            }
+        });
+    });
+
+    $('#BtnYes').click(function () {
+        window.location.href = '/take/test/' + id;
+    });
+
+    $('#BtnNo').click(function () {
+        $.post('/take/removetakecookie').done(function () {
+            window.location.href = '/take/test/' + id;
+        });
+    });
+</script>
 
 

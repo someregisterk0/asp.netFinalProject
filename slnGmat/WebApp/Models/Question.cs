@@ -16,6 +16,8 @@ namespace WebApp.Models
         public bool Active { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+
         public List<Answer> ListAnswer { get; set; }
         public TakeAnswer TakeAnswerChosen { get; set; } // Chỉ lưu câu trả lời được chọn (TakeAnswer.Active = 1)
         public short CauSo { get; set; }

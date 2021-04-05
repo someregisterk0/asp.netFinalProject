@@ -77,7 +77,7 @@ namespace WebApp.Controllers
         {
             //if (provider.Member.Add(obj) != 1)
             //{
-                
+
             //}
             provider.Member.Add(obj);
             return RedirectToAction("signin");
@@ -86,6 +86,14 @@ namespace WebApp.Controllers
         public IActionResult LogOut() //Tên hàm SignOut bị trùng trong ControllerBase
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (Request.Cookies["takeId"] != null)
+            {
+                Response.Cookies.Delete("takeId");
+            }
+            if (Request.Cookies["memberId"] != null)
+            {
+                Response.Cookies.Delete("memberId");
+            }
             return Redirect("/auth/signin");
         }
 

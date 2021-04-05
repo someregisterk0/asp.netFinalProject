@@ -31,14 +31,14 @@
             <tbody>
                 @foreach (Question item in Model)
                 {
-                <tr>
-                    <td><input type="checkbox" class="a" name="active" checked="@item.Active" value="@item.QuestionId" /></td>
-                    <td>@item.Content</td>
-                    <td>@item.Score</td>
-                    <td>@item.Level</td>
-                    <td><a href="/question/edit/@item.QuestionId">Edit</a></td>
-                    <td><a href="/answer/index/@item.QuestionId">List Answer</a></td>
-                </tr>
+                    <tr>
+                        <td><input type="checkbox" class="a" name="active" checked="@item.Active" value="@item.QuestionId" /></td>
+                        <td>@item.Content</td>
+                        <td>@item.Score</td>
+                        <td>@item.Level</td>
+                        <td><a href="/question/edit/@item.QuestionId">Edit</a></td>
+                        <td><a href="/answer/index/@item.QuestionId">List Answer</a></td>
+                    </tr>
                 }
             </tbody>
         </table>

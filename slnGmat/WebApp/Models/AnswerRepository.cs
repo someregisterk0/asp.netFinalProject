@@ -39,11 +39,8 @@ namespace WebApp.Models
 
         public IEnumerable<Question> GetAnswerForQuestions(Guid takeId, IEnumerable<Question> questions)
         {
-            short cauSo = 1;
             foreach (Question ques in questions)
             {
-                ques.CauSo = cauSo;  // Số thứ tự câu hỏi trong 1 bài test
-                cauSo++;
                 ques.ListAnswer = new List<Answer>();
                 //Lấy danh sách câu trả lời  cho câu hỏi
                 string sql = "SELECT * FROM Answer WHERE QuestionId = @QuestionId ORDER BY NEWID()";
@@ -54,6 +51,8 @@ namespace WebApp.Models
                     {
                         ques.ListAnswer.Add(ans); // thêm danh sách câu trả lời vào mỗi câu hỏi
                     }
+                    // Sắp xếp thứ tự answer để khi load lại page, answer không nhảy lung tung
+                    Helper.SortAnswer(ques.ListAnswer);
                 }
             }
 

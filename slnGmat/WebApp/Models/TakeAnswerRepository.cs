@@ -53,14 +53,24 @@ namespace WebApp.Models
             return null;
         }
 
-        public int GetTakeAnswerActiveForAQuestion(Guid takeId, Question ques)
+        public int GetTakeAnswerActiveForAQuestions(Guid takeId, IEnumerable<Question> questions)
         {
-            TakeAnswer ta = GetTakeAnswerActive(takeId, ques.QuestionId);
-            if (ta is not null)
+            foreach (var ques in questions)
             {
-                ques.TakeAnswerChosen = ta;
+                TakeAnswer ta = GetTakeAnswerActive(takeId, ques.QuestionId);
+                if (ta is not null)
+                {
+                    ques.TakeAnswerChosen = ta;
+                }
             }
-            return 0;
+            return 1;
+        }
+
+        // Câu trả lời được chọn, TakeAnswer.Active => 1
+        public int Chosen(Guid takeId, Guid questionId, int answerId)
+        {
+            string sql = "SetActiveTakeAnswer";
+            return connection.Execute(sql, new { TakeId = takeId, QuestionId = questionId, AnswerId = answerId }, commandType: CommandType.StoredProcedure);
         }
     }
 }
